@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="blun — your personal feedback inbox. Capture praise, issues, and ideas from the people around you." />
+    <title>blun — personal feedback inbox</title>
+    <script>
+      window.noctuaSettings = {
+        publicKey: 'public_01kx2z53qtecwar88c38pzhj8f',
+        apiBase: 'https://api.noctuahq.com',
+      };
+      window.Noctua = window.Noctua || (function (q) {
+        var stub = { q: q };
+        ['identify', 'group', 'clearIdentity', 'startFeedback', 'destroy', 'enableTelemetry'].forEach(function (m) {
+          stub[m] = function () { q.push([m].concat([].slice.call(arguments))); };
+        });
+        return stub;
+      })([]);
+    </script>
+    <script async src="https://plugin.noctuahq.com/noctua.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
