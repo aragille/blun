@@ -365,10 +365,10 @@ a:has(> .blun-logo) {
   gap: 26px;
   padding: 9px 10px 9px 18px;
   border-radius: var(--r-pill);
-  background: var(--glass);
-  border: 1px solid var(--line);
-  backdrop-filter: blur(14px) saturate(1.4);
-  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  background: rgba(253, 253, 252, 0.72);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(1.6);
+  -webkit-backdrop-filter: blur(20px) saturate(1.6);
   box-shadow: var(--glass-inset), var(--shadow-soft);
   animation: rise-soft 0.8s var(--ease-spring) both;
 }
@@ -944,7 +944,13 @@ a:has(> .blun-logo) {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* language pill hugs its EN·RU content instead of stretching the sidebar width */
+.sidebar .foot .lang-switch {
+  align-self: flex-start;
 }
 
 .sidebar .foot .side-link {
@@ -1808,6 +1814,7 @@ a:has(> .blun-logo) {
 }
 
 .entity-card {
+  position: relative;
   border-radius: var(--r-card);
   background: var(--surface);
   border: 1px solid var(--line);
@@ -1819,6 +1826,13 @@ a:has(> .blun-logo) {
 
 .entity-card:hover {
   box-shadow: var(--shadow-float);
+}
+
+/* a card with an open dropdown lifts above the cards below so the
+   menu isn't clipped behind the next row (cards each form a stacking
+   context via their entrance transform, so we raise the whole card) */
+.entity-card:has(.select-menu) {
+  z-index: 5;
 }
 
 .entity-main {
