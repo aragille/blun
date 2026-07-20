@@ -365,11 +365,20 @@ a:has(> .blun-logo) {
   gap: 26px;
   padding: 9px 10px 9px 18px;
   border-radius: var(--r-pill);
-  background: rgba(253, 253, 252, 0.72);
-  border: 1px solid rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px) saturate(1.6);
-  -webkit-backdrop-filter: blur(20px) saturate(1.6);
-  box-shadow: var(--glass-inset), var(--shadow-soft);
+  /* translucent panes + heavy blur so it reads as real glass even at the
+     top of the page — the faint dotted grid shows through the sheen */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.5),
+    rgba(255, 255, 255, 0.32)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(22px) saturate(1.8);
+  -webkit-backdrop-filter: blur(22px) saturate(1.8);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.9),
+    inset 0 -1px 0 rgba(255, 255, 255, 0.4),
+    0 8px 30px -12px rgba(10, 10, 10, 0.22);
   animation: rise-soft 0.8s var(--ease-spring) both;
 }
 
